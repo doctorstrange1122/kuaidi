@@ -6,7 +6,7 @@ pages_build_output_dir = "public"
 # 方式 A（推荐，最省心）：在 Cloudflare Pages 控制台「设置 → 绑定 → D1 数据库」里
 #   手动添加一个绑定，变量名填 DB、数据库名选 express_sync。本文件无需改动。
 # 方式 B：在此处填写 database_id（需先在控制台或用 `wrangler d1 create express_sync` 创建）。
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "express_sync"
-# database_id = "REPLACE_WITH_YOUR_D1_ID"
+[[d1_databases]]
+binding = "DB"
+database_name = "express_sync"
+database_id = "4242ec96-8138-4a42-ab3b-162a3275dd77"
