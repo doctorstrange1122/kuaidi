@@ -1,0 +1,36 @@
+{
+  "appName": "快递聚合",
+  "ui": {
+    "statTotal": "总单",
+    "statTransit": "在途/派送",
+    "statSigned": "已签收",
+    "statAbnormal": "异常/退回",
+    "emptyHint": "还没有快递，点右下角 + 开始添加",
+    "addMenu": [
+      "悬浮窗截屏识别",
+      "粘贴文本识别",
+      "从相册选图识别",
+      "相机扫描快递单",
+      "管理账号",
+      "设置"
+    ],
+    "colors": {
+      "primary": "#ff5000",
+      "chipBg": "#f3f4f6",
+      "chipText": "#374151",
+      "chipSelectedBg": "#ff5000",
+      "chipSelectedText": "#ffffff",
+      "label": "#6b7280"
+    }
+  },
+  "sync": {
+    "apiBase": "https://express-sync-pages.pages.dev"
+  },
+  "features": {
+    "enableScan": true,
+    "enablePickImage": true,
+    "enablePaste": true,
+    "enableFloatCapture": true
+  },
+  "companyWhitelist": []
+}
