@@ -52,8 +52,8 @@ function bufToHex(buf) {
   return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 async function hmacSign(data) {
-  const key = await crypto.subtle.importKey("raw", enc.encode(jwtSecret), "HMAC", false, ["sign"]);
-  const sig = await crypto.subtle.sign("HMAC", key, enc.encode(data));
+  const key = await crypto.subtle.importKey("raw", enc.encode(jwtSecret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const sig = await crypto.subtle.sign({ name: "HMAC", hash: "SHA-256" }, key, enc.encode(data));
   return b64url(sig);
 }
 async function signJWT(payload) {
@@ -66,8 +66,8 @@ async function verifyJWT(token) {
     const parts = token.split(".");
     if (parts.length !== 3) return null;
     const data = parts[0] + "." + parts[1];
-    const key = await crypto.subtle.importKey("raw", enc.encode(jwtSecret), "HMAC", false, ["verify"]);
-    const ok = await crypto.subtle.verify("HMAC", key, b64urlDecode(parts[2]), enc.encode(data));
+    const key = await crypto.subtle.importKey("raw", enc.encode(jwtSecret), { name: "HMAC", hash: "SHA-256" }, false, ["verify"]);
+    const ok = await crypto.subtle.verify({ name: "HMAC", hash: "SHA-256" }, key, b64urlDecode(parts[2]), enc.encode(data));
     if (!ok) return null;
     const payload = JSON.parse(dec.decode(b64urlDecode(parts[1])));
     if (!payload.exp || payload.exp * 1000 < Date.now()) return null;
